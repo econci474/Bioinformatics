@@ -1,0 +1,198 @@
+Config file /suffolk/WorkGenomicsD/ec474/mgatk/.internal/parseltongue/snake.scatter.yaml is extended by additional config specified via the command line.
+Building DAG of jobs...
+Using shell: /usr/bin/bash
+Provided cores: 12
+Rules claiming more threads will be scaled down.
+Job stats:
+job                           count
+--------------------------  -------
+all                               1
+call_variants                     1
+make_depth_table                  1
+make_final_sparse_matrices        1
+process_one_slice                12
+total                            16
+
+Select jobs to execute...
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.11.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.11.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.coverage.txt
+    jobid: 6
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.11.depth.txt
+    wildcards: sample=barcodes.11
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.1.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.1.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.coverage.txt
+    jobid: 12
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.1.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.C.txt
+    wildcards: sample=barcodes.1
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.7.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.7.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.coverage.txt
+    jobid: 7
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.7.depth.txt
+    wildcards: sample=barcodes.7
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.3.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.3.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.coverage.txt
+    jobid: 10
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.3.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.coverage.txt
+    wildcards: sample=barcodes.3
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.9.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.9.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.coverage.txt
+    jobid: 5
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.9.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.coverage.txt
+    wildcards: sample=barcodes.9
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.12.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.12.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.coverage.txt
+    jobid: 9
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.12.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.T.txt
+    wildcards: sample=barcodes.12
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.2.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.2.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.coverage.txt
+    jobid: 3
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.2.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.G.txt
+    wildcards: sample=barcodes.2
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.10.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.10.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.coverage.txt
+    jobid: 8
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.10.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.coverage.txt
+    wildcards: sample=barcodes.10
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.5.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.5.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.coverage.txt
+    jobid: 13
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.5.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.A.txt
+    wildcards: sample=barcodes.5
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:14 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.4.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.4.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.coverage.txt
+    jobid: 2
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.4.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.A.txt
+    wildcards: sample=barcodes.4
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:15 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.8.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.8.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.coverage.txt
+    jobid: 11
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.8.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.G.txt
+    wildcards: sample=barcodes.8
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:15 2024]
+rule process_one_slice:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/.internal/samples/barcodes.6.bam.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.6.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.coverage.txt
+    jobid: 4
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.6.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.A.txt
+    wildcards: sample=barcodes.6
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:25 2024]
+Finished job 9.
+1 of 16 steps (6%) done
+[Thu Jul 18 15:47:26 2024]
+Finished job 3.
+2 of 16 steps (12%) done
+[Thu Jul 18 15:47:27 2024]
+Finished job 10.
+3 of 16 steps (19%) done
+[Thu Jul 18 15:47:28 2024]
+Finished job 6.
+4 of 16 steps (25%) done
+[Thu Jul 18 15:47:28 2024]
+Finished job 7.
+5 of 16 steps (31%) done
+[Thu Jul 18 15:47:28 2024]
+Finished job 2.
+6 of 16 steps (38%) done
+[Thu Jul 18 15:47:28 2024]
+Finished job 12.
+7 of 16 steps (44%) done
+[Thu Jul 18 15:47:28 2024]
+Finished job 5.
+8 of 16 steps (50%) done
+[Thu Jul 18 15:47:28 2024]
+Finished job 11.
+9 of 16 steps (56%) done
+[Thu Jul 18 15:47:28 2024]
+Finished job 8.
+10 of 16 steps (62%) done
+[Thu Jul 18 15:47:28 2024]
+Finished job 13.
+11 of 16 steps (69%) done
+[Thu Jul 18 15:47:28 2024]
+Finished job 4.
+12 of 16 steps (75%) done
+Select jobs to execute...
+
+[Thu Jul 18 15:47:28 2024]
+rule make_final_sparse_matrices:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.coverage.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.A.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.C.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.G.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.T.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.coverage.txt.gz
+    jobid: 14
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.T.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.coverage.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.C.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.A.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.G.txt.gz; Input files updated by another job: /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.12.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.4.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.9.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.5.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.11.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.7.T.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.3.C.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.1.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.A.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.8.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.10.coverage.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.6.G.txt, /suffolk/WorkGenomicsD/ec474/mgatk/temp/sparse_matrices/barcodes.2.G.txt
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:28 2024]
+rule make_depth_table:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.4.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.2.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.6.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.9.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.11.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.7.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.10.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.12.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.3.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.8.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.1.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.5.depth.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.depthTable.txt
+    jobid: 1
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.depthTable.txt; Input files updated by another job: /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.2.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.12.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.4.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.10.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.8.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.6.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.5.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.9.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.3.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.1.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.7.depth.txt, /suffolk/WorkGenomicsD/ec474/mgatk/qc/depth/barcodes.11.depth.txt
+    resources: tmpdir=/tmp
+
+[Thu Jul 18 15:47:29 2024]
+Finished job 1.
+13 of 16 steps (81%) done
+[Thu Jul 18 15:47:39 2024]
+Finished job 14.
+14 of 16 steps (88%) done
+Select jobs to execute...
+
+[Thu Jul 18 15:47:39 2024]
+rule call_variants:
+    input: /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.A.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.C.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.G.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.T.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/chrM_refAllele.txt
+    output: /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.variant_stats.tsv.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.cell_heteroplasmic_df.tsv.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.vmr_strand_plot.png
+    jobid: 15
+    reason: Missing output files: /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.variant_stats.tsv.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.vmr_strand_plot.png, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.cell_heteroplasmic_df.tsv.gz; Input files updated by another job: /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.T.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.C.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.A.txt.gz, /suffolk/WorkGenomicsD/ec474/mgatk/final/mtx_mgatk_1.G.txt.gz
+    resources: tmpdir=/tmp
+
+Shutting down, this might take some time.
+Exiting because a job execution failed. Look above for error message
+Complete log: .snakemake/log/2024-07-18T154713.927869.snakemake.log

@@ -1,0 +1,383 @@
+Inputs the path to read 1 and read 2 sequences from lost_reads and the antibody barcodes containing their respective names
+format:
+-R1 READ1_PATH.fastq.gz, --read1 READ1_PATH.fastq.gz
+-R2 READ2_PATH.fastq.gz, --read2 READ2_PATH.fastq.gz
+-t tags.csv, --tags tags.csv
+
+${SOURCE}= /suffolk/RawGenomicsH/Genomics_Group/fastqs/ImmunoPheno_project/007_Immuno_GP0030/SLX-22953_GEX/
+${HOME} = /suffolk/Homes/ec474/scripts/
+-R1 ${SOURCE}SLX-22953.HLNNMDRX3.s_1.r_1.lostreads-recovered.fq.gz, --read1 ${SOURCE}SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.fq.gz-recovered
+-R2 ${SOURCE}SLX-22953.HLNNMDRX3.s_1.r_2.lostreads.fq.gz, --read2 ${SOURCE}SLX-22953.HLNNMDRX3.s_1.r_2.lostreads.fq.gz
+-t ${HOME}tags.csv, --tags ${HOME}tags.csv -trim14
+
+Position of cellular and UMI barcodes
+First nucleotide of cell barcode in read 1 (CB_FIRST=1)
+-cbf CB_FIRST, --cell_barcode_first_base CB_FIRST
+
+Last nucleotide of cell barcode in read 1 (CB_LAST=16), TTCCTGCCATTACTA
+-cbl CB_LAST, --cell_barcode_last_base CB_LAST
+
+First nucleotide of UMI in read 1 (UMI_FIRST = 17)
+- umif UMI_FIRST, --umi_first_base UMI_FIRST
+
+Last nucleotide of UMI in read 1 (UMI_LAST = 26)
+- umil UMI_LAST, --umi_last_base UMI_LAST
+
+Summary: 
+-cbf 1 -cbl 16 -umif 17 - umil 26
+
+How many errors you are allowd between two cell barcodes to collapse them onto one cell: 
+--bc_collapsing_dist N_ERRORS
+--bc_collapsing_dist 1
+
+How many errors are allowed between two UMI within the same cell and TAG to collapse: 
+--umi_collapsing_dist N_ERRORS
+--umi_collapsing_dist 2 
+
+Deactivate UMI correction
+--no_umi_correction
+
+Expected cells to demultiplex = 10093 cells (from filtered-fastq)
+
+Path to cellranger-arc: 
+${CELLRANGERARC} = /suffolk/RawGenomicsH/Genomics_Group/software/cellranger-arc-2.0.2/cellranger-arc
+
+Path to 10x Multiome GEX barcode whitelist: 
+${WHITELIST} = /suffolk/RawGenomicsF/ec474/cellrangerarc_barcodes/737K-arc_v1.csv
+-wl ${WHITELIST}
+However can also use the output from cellranger arc with barcode.tsv
+
+Filtering
+Maximum Levenshtein distance allowed. Allows to catch antibody barcodes that might have errors compared to real barcodes
+--max-error 3
+
+Path to resulting output folder that will contain both read and UMI mtx results as well as run_report.yaml
+${OUTPUT} = /suffolk/RawGenomicsF/ec474/cite_seq-count/
+
+
+###FINAL CODE### 
+##CITE-seq-Count, to obtain the count of the number of UMIs and reads mapping to an antiobdy from your CITE-Seq experiment.
+###SET UP ENVIRONMENT###
+SOURCE=/suffolk/RawGenomicsH/Genomics_Group/fastqs/ImmunoPheno_project/007_Immuno_GP0030/SLX-22953_GEX
+HOME=/suffolk/Homes/ec474/scripts
+WHITELIST=/suffolk/RawGenomicsF/ec474/cellrangerarc_barcodes
+OUTPUT=/suffolk/RawGenomicsF/ec474/cite-seq_count/
+echo ENV_SET! 
+
+###RUN SCRIPT###
+CITE-seq-Count -R1 ${SOURCE}/SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.recovered.fq.gz \
+    -R2 ${SOURCE}/SLX-22953.HLNNMDRX3.s_1.r_2.lostreads.fq.gz \
+    -t ${HOME}/tags.csv \
+    -cbf 1 -cbl 16 -umif 17 -umil 26 \
+    -cells 10093 \
+    -wl ${WHITELIST}/barcodes.csv \
+    -o ${OUTPUT}
+echo CODE_RUN!
+
+
+### ERROR TROUBLESHOOTING ###
+##Error 1
+Loading whitelist
+Unequal number of read1 (149) and read2(139) files provided
+
+##Troubleshoot 1
+#check number of files present in fq
+zcat filename_R1.fastq.gz | grep -P "^[ATGCN]{1,}$" | head -100 | awk '{ print length }' | sort | uniq
+
+zcat SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.fq.gz-recovered | grep -P "^[ATGCN]{1,}$" | head -100 | awk '{ print length }' | sort | uniq
+28
+
+suffolk[/home/ec474]% zcat SLX-22953.HLNNMDRX3.s_1.r_2.lostreads.fq.gz | grep -P "^[ATGCN]{1,}$" | head -100 | awk '{ print length }' | sort | uniq
+90
+
+#check how R1 and R2 files look like in case difference of trimming
+#READ 1 
+zcat SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.fq.gz-recovered | head -4
+@A00489:1950:HLNNMDRX3:1:2101:1108:1000 1:N:0:TGCGCGGTTT+GGGCTCCTTG
+NCATTACTCCATCAGGGAACAAATGCTA
++
+#FFFFFFFFFFFFFFFFFFFFFFFFFFF
+
+#READ 2
+zcat SLX-22953.HLNNMDRX3.s_1.r_2.lostreads.fq.gz | head -4 
+@A00489:1950:HLNNMDRX3:1:2101:1108:1000 2:N:0:TGCGCGGTTT+GGGCTCCTTG
+GCCATTATTAAAGTTTTCTGGTTGGACCATATGAAATTTCCACTATTTGTTTATTTCAGATCTACAAAAAGGATAATTTCATATGATTCA
++
+FFF:FFFFFFFFFFFFFFFFFFFFFFFF:FFFFFF:F:FFFFFFF,FFF,F:FFFFFFFFFFFFFFFFFFFFFFF:FFFFFFFFFFF:FF
+
+#Rather than use whitelist from cellranger-arc using barcodes identified in YOUR sample using cellranger-arc that
+correspond to 10093 cells
+
+cp /suffolk/WorkGenomicsD/ec474/mitox_count_masked/outs/filtered_feature_bc_matrix/barcodes.tsv.gz /suffolk/RawGenomicsF/ec474/cellrangerarc_barcodes/barcodes.tsv.gz
+
+convert TSV into CSV 
+awk 'BEGIN { FS="\t"; OFS="," } {$1=$1; print}' barcodes.tsv > barcodes.csv
+
+remove the addended -1
+awk 'BEGIN { FS="\t"; OFS="," } {sub(/-1$/, "", $1); print $1}' barcodes.tsv > barcodes.csv
+
+#Try without whitelist 
+-wl ${WHITELIST} \
+Still the same error
+Unequal number of read1 (149) and read2(139) files provided
+
+#Change file name as the .fq.gz-recovered may be causing problems
+SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.recovered.fq.gz
+Unequal number of read1 (149) and read2(139) files provided
+
+#Check how many sequences are read in each fastq.gz file using FastQC package from Babraham Bioinformatics
+
+(ENV) suffolk[/home/ec474]% fastqc SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.fq.gz-recovered
+null
+Failed to process SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.fq.gz-recovered
+uk.ac.babraham.FastQC.Sequence.SequenceFormatException: ID line didn't start with '@' at line 1
+	at uk.ac.babraham.FastQC.Sequence.FastQFile.readNext(FastQFile.java:163)
+	at uk.ac.babraham.FastQC.Sequence.FastQFile.<init>(FastQFile.java:93)
+	at uk.ac.babraham.FastQC.Sequence.SequenceFactory.getSequenceFile(SequenceFactory.java:106)
+	at uk.ac.babraham.FastQC.Sequence.SequenceFactory.getSequenceFile(SequenceFactory.java:62)
+	at uk.ac.babraham.FastQC.Analysis.OfflineRunner.processFile(OfflineRunner.java:163)
+	at uk.ac.babraham.FastQC.Analysis.OfflineRunner.<init>(OfflineRunner.java:125)
+	at uk.ac.babraham.FastQC.FastQCApplication.main(FastQCApplication.java:316)
+
+fastqc SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.recovered.fq.gz
+Filename	SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.recovered.fq.gz
+File type	Conventional base calls
+Encoding	Sanger / Illumina 1.9
+Total Sequences	91283723
+Total Bases	2.5 Gbp
+Sequences flagged as poor quality	0
+Sequence length	28
+%GC	45
+
+Filename	SLX-22953.HLNNMDRX3.s_1.r_2.lostreads.fq.gz
+File type	Conventional base calls
+Encoding	Sanger / Illumina 1.9
+Total Sequences	91283723
+Total Bases	8.2 Gbp
+Sequences flagged as poor quality	0
+Sequence length	90
+%GC	33
+
+#Where do the numbers come from? 
+Unequal number of read1 (149) and read2(139) files provided
+
+suffolk[/home/ec474]% more run_citeseqcount.log
+ENV_SET!
+Loading whitelist
+Unequal number of read1 (149) and read2(139) files provided
+ Exiting
+CODE_RUN!
+DONE!
+
+So the problem is with the reads loading before the code finishes running?
+
+zcat SLX-22953.HLNNMDRX3.s_1.r_1.lostreads.recovered.fq.gz | wc -l
+365134892 
+
+zcat SLX-22953.HLNNMDRX3.s_1.r_2.lostreads.fq.gz | wc -l
+365134892
+
+These are the number of lines, which are exactly the same.  
+If I divide this by 4, I obtain 91283723 sequences (which is what I expect)
+
+#Chemistry was incorrect
+CRUK switched from v2 to v3 in March 2019, and from v3 to v3.1 at the end of 2020. As far as I know, all of our 10X data has been generated using v3 or v3.1.
+
+UMI 10 nucleotides in V2 
+UMI 12 nucleotides in V3
+Updated coordinates 
+
+#Notices that my environment was not activated when submitting job to HPC 
+included
+eval "$(conda shell.bash hook)"
+conda activate ENV
+
+I am not sure if instead I should try instead
+eval "$(conda shell.bash hook)"
+source $CONDA_PREFIX/etc/profile.d/mamba.sh
+mamba activate ENV
+
+
+#Set up environment for HPC job submission 
+
+#change tsch to bash which is preferred by conda
+source /home/ec474/.bashrc >> not used
+eval "$(conda shell.bash hook)" >> not used
+
+module load conda
+source /usr/mbu/software/anaconda3/etc/profile.d/conda.sh
+conda activate ENV
+conda list
+
+#Output
+Started mapping
+Processing 91,283,723 reads
+CITE-seq-Count is running with 64 cores.
+Processed 1,000,000 reads in 20.03 seconds. Total reads: 1,000,000 in child 77752
+Mapping done for process 77752. Processed 1,426,308 reads
+...
+Mapping done for process 77815. Processed 1,426,319 reads
+Mapping done
+Merging results
+Correcting cell barcodes
+Generated barcode tree from whitelist
+Finding reference candidates
+Processing 5,416,135 cell barcodes
+Collapsing cell barcodes
+Correcting umis
+Traceback (most recent call last):
+  File "/suffolk/Homes/ec474/miniforge3/envs/ENV/bin/CITE-seq-Count", line 8, in <module>
+    sys.exit(main())
+  File "/suffolk/Homes/ec474/miniforge3/envs/ENV/lib/python3.10/site-packages/cite_seq_count/__main__.py", line 435, in main
+    ) = processing.correct_umis(
+  File "/suffolk/Homes/ec474/miniforge3/envs/ENV/lib/python3.10/site-packages/cite_seq_count/processing.py", line 229, in corr
+ect_umis
+    for TAG in final_results[cell_barcode]:
+RuntimeError: dictionary keys changed during iteration
+DONE!
+
+Bug fix:
+https://github.com/Hoohm/CITE-seq-Count/issues/125
+Need to force it to use python <3.8 for bug to be fixed
+
+Created another environment called CITESEQCOUNT, which contains
+python=3.7
+libbzip2-dev
+pysam
+CITE-seq-count=1.4.3
+
+#make sure to always compile environments while logged into mallow
+ssh ec474@mallow
+
+Submitted batch job 1742266
+
+
+For CITE-seq-Count, the output looks like this:
+
+OUTFOLDER/
+-- umi_count/
+-- -- matrix.mtx.gz
+-- -- features.tsv.gz
+-- -- barcodes.tsv.gz
+-- read_count/
+-- -- matrix.mtx.gz
+-- -- features.tsv.gz
+-- -- barcodes.tsv.gz
+-- unmapped.csv
+-- run_report.yaml
+
+File descriptions
+
+    features.tsv.gz contains the feature names, in this context our tags.
+    barcodes.tsv.gz contains the cell barcodes.
+    matrix.mtx.gz contains the actual values. read_count and umi_count contain respectively the read counts and the collapsed umi counts. For analysis you should use the umi data. The read_count can be used to check if you have an overamplification or oversequencing issue with your protocol.
+    unmapped.csv contains the top N tags that haven't been mapped.
+    run_report.yaml contains the parameters used for the run as well as some statistics. here is an example:
+
+Read10x('OUTFOLDER/umi_count/', gene.column=1)
+
+
+#Feedback from Nell 
+Try using the complement strand of the tags and see whether this increases the number of barcodes detected per hash
+
+Forward: 
+TTCCTGCCATTACTA, NPC_HASH1
+CCGTACCTCATTGTT, NPC_HASH2
+GGTAGATGTCCTCAG, NPC_HASH3
+
+Complement and Inverse: 
+TAGTAATGGCAGGAA, NPC_HASH1
+AACAATGAGGTACGG, NPC_HASH2
+CTGAGGACATCTACC, NPC_HASH3
+
+Resubmitted job on 09/05/2024
+output to citeseqcount folder 2 
+tried: 
+tags2.csv which is the reverse complement hastag oligos 
+
+Processed in hto2.r
+showed even worse tagging of barcodes 
+
+rowSums(hto)
+NPC_HASH1 NPC_HASH2 NPC_HASH3  unmapped
+       14         6         7  16978843
+
+Resubmitted job on 10/05/2024 
+Advice from Camilla 
+
+output to citeseqcount folder 3 
+tried: 
+tags.csv 
+barcodes.tsv from cell ranger arc output (retaining -1 suffix)
+Submitted batch job 1743585
+
+
+Resubmitted job on 13/05/2024
+Advice from Camilla: 
+
+Barcodes are present in lostread files from original fastq
+suffolk[/home/ec474]% zcat sample1_R1.fastq.gz | head -10000000 | grep GGTAGATGTCCTCAG | wc -l
+545
+
+Not sure how this relates to the rowSums(hto) output but we know to expect a higher mapped reads than 0%
+Currently on more run_report
+
+Running time: 1.0 hour, 45.0 minutes, 54.62 seconds
+CITE-seq-Count Version: 1.4.3
+Reads processed: 91283723
+Percentage mapped: 0
+Percentage unmapped: 100
+Uncorrected cells: 15
+Correction:
+	Cell barcodes collapsing threshold: 1
+	Cell barcodes corrected: 316480
+	UMI collapsing threshold: 2
+	UMIs corrected: 1846326
+Run parameters:
+	Read1_paths: /suffolk/RawGenomicsH/Genomics_Group/fastqs/ImmunoPheno_project/007_Immuno_GP0030/SLX-22953_GEX
+/sample1_R1.fastq.gz
+	Read2_paths: /suffolk/RawGenomicsH/Genomics_Group/fastqs/ImmunoPheno_project/007_Immuno_GP0030/SLX-22953_GEX
+/sample1_R2.fastq.gz
+	Cell barcode:
+		First position: 1
+		Last position: 16
+	UMI barcode:
+		First position: 17
+		Last position: 28
+	Expected cells: 10093
+	Tags max errors: 2
+	Start trim: 14
+
+remove -trim 14 as it trims the FIRST 14 nucleotides from the barcode
+Also removed the spaces in the tags.csv file
+
+Rerun job
+
+Noticed that SLX-22953.HLNNMDRX3.s_1.r_2.lostreads.fq.gz was missing from original data
+cp this again and submitted ticket to IT helpdesk to recover this
+
+Date: 2024-05-13
+Running time: 1.0 hour, 26.0 minutes, 18.72 seconds
+CITE-seq-Count Version: 1.4.3
+Reads processed: 91283723
+Percentage mapped: 68
+Percentage unmapped: 32
+Uncorrected cells: 12
+Correction:
+	Cell barcodes collapsing threshold: 1
+	Cell barcodes corrected: 316480
+	UMI collapsing threshold: 2
+	UMIs corrected: 1376837
+Run parameters:
+	Read1_paths: /suffolk/RawGenomicsH/Genomics_Group/fastqs/ImmunoPheno_project/007_Immuno_GP0030/SLX-22953_GE
+X/sample1_R1.fastq.gz
+	Read2_paths: /suffolk/RawGenomicsH/Genomics_Group/fastqs/ImmunoPheno_project/007_Immuno_GP0030/SLX-22953_GE
+X/sample1_R2.fastq.gz
+	Cell barcode:
+		First position: 1
+		Last position: 16
+	UMI barcode:
+		First position: 17
+		Last position: 28
+	Expected cells: 10093
+

@@ -1,0 +1,13 @@
+id,name,read,pattern,sequence,feature_type
+NPC_HASH1,Nuclear_Pore_Complex_Hashtag_1_Antibody,R2,^(BC),TTCCTGCCATTACTA,Antibody Capture
+NPC_HASH2,Nuclear_Pore_Complex_Hashtag_2_Antibody,R2,^(BC),CCGTACCTCATTGTT,Antibody Capture
+NPC_HASH3,Nuclear_Pore_Complex_Hashtag_3_Antibody,R2,^(BC),GGTAGATGTCCTCAG,Antibody Capture
+NPC_HASH4,Nuclear_Pore_Complex_Hashtag_4_Antibody,R2,^(BC),TGGTGTCATTCTTGA,Antibody Capture
+NPC_HASH5,Nuclear_Pore_Complex_Hashtag_5_Antibody,R2,^(BC),ATGATGAACAGCCAG,Antibody Capture
+NPC_HASH6,Nuclear_Pore_Complex_Hashtag_6_Antibody,R2,^(BC),CTCGAACGCTTATCG,Antibody Capture
+NPC_HASH7,Nuclear_Pore_Complex_Hashtag_7_Antibody,R2,^(BC),CTTATCACCGCTCAA,Antibody Capture
+NPC_HASH8,Nuclear_Pore_Complex_Hashtag_8_Antibody,R2,^(BC),TGACGCCGTTGTTGT,Antibody Capture
+NPC_HASH9,Nuclear_Pore_Complex_Hashtag_9_Antibody,R2,^(BC),GCCTAGTATGATCCA,Antibody Capture
+NPC_HASH11,Nuclear_Pore_Complex_Hashtag_11_Antibody,R2,^(BC),TTGGCCTTTGTATCG,Antibody Capture
+NPC_HASH12,Nuclear_Pore_Complex_Hashtag_12_Antibody,R2,^(BC),AACGCCAGTATGAAC,Antibody Capture
+NPC_HASH14,Nuclear_Pore_Complex_Hashtag_14_Antibody,R2,^(BC),AGCAACTCACTCTTT,Antibody Capture

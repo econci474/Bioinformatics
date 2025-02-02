@@ -1,0 +1,470 @@
+Installation instructions
+
+python3 -m venv venv3
+source /home/ec474/venv3/bin/activate
+
+pip3 install mgatk
+
+mgatk --version
+
+pip install R 
+pip install --upgrade pip
+
+ERROR: cannot find R in environment; add it to user PATH environment
+
+(venv3) norfolk[/home/ec474]% which R
+/usr/bin/R
+
+but when I update the SLURM script to include 
+export PATH=/usr/bin/R
+
+then this ERROR occurs:
+mgatk: command not found
+
+(venv3) norfolk[/home/ec474]% which mgatk
+/nfs4/suffolk/Homes/ec474/venv3/bin/mgatk
+
+#Why does mgatk need R? 
+In addition the python mgatk package, the following R packages GenomicRanges, data.table, SummarizedExperiment, and Matrix. 
+Note: if you specify the flag --skip-R, you can avoid the internal R execution but will have plain text enumerations of the mitochondrial genetic data.
+
+(venv3) norfolk[/home/ec474]% python -m pip install data.table
+ERROR: Could not find a version that satisfies the requirement data.table (from versions: none)
+ERROR: No matching distribution found for data.table
+(venv3) norfolk[/home/ec474]% python -m pip install java
+ERROR: Could not find a version that satisfies the requirement java (from versions: none)
+ERROR: No matching distribution found for java
+
+
+I managed to download GenomicRanges and SummarizedExperiment onto the venv3, but not data.table or java or R
+
+(venv3) norfolk[/home/ec474]% python -m pip list
+Package                   Version
+------------------------- -----------
+appdirs                   1.4.4
+attrs                     23.2.0
+BiocFrame                 0.5.11
+biocutils                 0.1.5
+biopython                 1.84
+certifi                   2024.7.4
+cffi                      1.16.0
+charset-normalizer        3.3.2
+click                     8.1.7
+ConfigArgParse            1.7
+connection-pool           0.0.3
+datrie                    0.8.2
+docutils                  0.21.2
+dpath                     2.2.0
+exceptiongroup            1.2.2
+fastjsonschema            2.20.0
+GenomicRanges             0.4.28
+gitdb                     4.0.11
+GitPython                 3.1.43
+humanfriendly             10.0
+idna                      3.7
+iniconfig                 2.0.0
+IRanges                   0.2.11
+Jinja2                    3.1.4
+jsonschema                4.23.0
+jsonschema-specifications 2023.12.1
+jupyter_core              5.7.2
+MarkupSafe                2.1.5
+matrix                    3.0.0
+mgatk                     0.7.0
+nbformat                  5.10.4
+ncls                      0.0.68
+numpy                     2.0.0
+optparse-pretty           0.1.1
+packaging                 24.1
+pandas                    2.2.2
+pip                       24.1.2
+plac                      1.4.3
+platformdirs              4.2.2
+pluggy                    1.5.0
+polars                    1.2.0
+psutil                    6.0.0
+PuLP                      2.9.0
+pycparser                 2.22
+pysam                     0.22.1
+pytest                    8.2.2
+python-dateutil           2.9.0.post0
+pytz                      2024.1
+PyYAML                    6.0.1
+referencing               0.35.1
+regex                     2024.5.15
+requests                  2.32.3
+reretry                   0.11.8
+rpds-py                   0.19.0
+rpy2                      3.5.16
+ruamel.yaml               0.18.6
+ruamel.yaml.clib          0.2.8
+setuptools                65.5.0
+six                       1.16.0
+smart-open                7.0.4
+smmap                     5.0.1
+snakemake                 7.32.4
+stopit                    1.1.2
+SummarizedExperiment      0.4.5
+tabulate                  0.9.0
+throttler                 1.2.2
+tomli                     2.0.1
+toposort                  1.10
+traitlets                 5.14.3
+tzdata                    2024.1
+tzlocal                   5.2
+urllib3                   2.2.2
+wrapt                     1.16.0
+yte                       1.5.4
+
+SOLUTION 1: 
+Camillla reccomends disregarding the official documentation and downloading mgatk package onto conda enviroment, where you can easily set up both R and python. 
+
+created mamba environment MGATK, here are package list: it has summarizedexperiment, genomicranges, r-matrix and data.table 
+# Name                    Version                   Build  Channel
+_libgcc_mutex             0.1                 conda_forge    conda-forge
+_openmp_mutex             4.5                       2_gnu    conda-forge
+_r-mutex                  1.0.1               anacondar_1    conda-forge
+_sysroot_linux-64_curr_repodata_hack 3                   h69a702a_16    conda-forge
+alsa-lib                  1.2.11               hd590300_1    conda-forge
+amply                     0.1.6              pyhd8ed1ab_0    conda-forge
+appdirs                   1.4.4              pyh9f0ad1d_0    conda-forge
+argcomplete               3.4.0              pyhd8ed1ab_0    conda-forge
+attrs                     23.2.0             pyh71513ae_0    conda-forge
+binutils_impl_linux-64    2.40                 ha1999f0_7    conda-forge
+bioconductor-biobase      2.62.0            r43ha9d7317_2    bioconda
+bioconductor-biocgenerics 0.48.1            r43hdfd78af_2    bioconda
+bioconductor-data-packages 20231203             hdfd78af_0    bioconda
+bioconductor-delayedarray 0.28.0            r43ha9d7317_2    bioconda
+bioconductor-genomeinfodb 1.38.1            r43hdfd78af_1    bioconda
+bioconductor-genomeinfodbdata 1.2.11            r43hdfd78af_1    bioconda
+bioconductor-genomicranges 1.54.1            r43ha9d7317_2    bioconda
+bioconductor-iranges      2.36.0            r43ha9d7317_2    bioconda
+bioconductor-matrixgenerics 1.14.0            r43hdfd78af_3    bioconda
+bioconductor-s4arrays     1.2.0             r43ha9d7317_2    bioconda
+bioconductor-s4vectors    0.40.2            r43ha9d7317_2    bioconda
+bioconductor-sparsearray  1.2.2             r43ha9d7317_2    bioconda
+bioconductor-summarizedexperiment 1.32.0            r43hdfd78af_0    bioconda
+bioconductor-xvector      0.42.0            r43ha9d7317_2    bioconda
+bioconductor-zlibbioc     1.48.0            r43ha9d7317_2    bioconda
+biopython                 1.84            py312h9a8786e_0    conda-forge
+brotli-python             1.1.0           py312h30efb56_1    conda-forge
+bwidget                   1.9.14               ha770c72_1    conda-forge
+bzip2                     1.0.8                h4bc722e_7    conda-forge
+c-ares                    1.32.2               h4bc722e_0    conda-forge
+ca-certificates           2024.7.4             hbcca054_0    conda-forge
+cairo                     1.18.0               hbb29018_2    conda-forge
+certifi                   2024.7.4           pyhd8ed1ab_0    conda-forge
+cffi                      1.16.0          py312hf06ca03_0    conda-forge
+charset-normalizer        3.3.2              pyhd8ed1ab_0    conda-forge
+click                     8.1.7           unix_pyh707e725_0    conda-forge
+coin-or-cbc               2.10.11              h56f689f_0    conda-forge
+coin-or-cgl               0.60.7               h516709c_0    conda-forge
+coin-or-clp               1.17.8               h1ee7a9c_0    conda-forge
+coin-or-osi               0.108.10             haf5fa05_0    conda-forge
+coin-or-utils             2.11.11              h8c65801_1    conda-forge
+coincbc                   2.10.11           0_metapackage    conda-forge
+colorama                  0.4.6              pyhd8ed1ab_0    conda-forge
+configargparse            1.7                pyhd8ed1ab_0    conda-forge
+connection_pool           0.0.3              pyhd3deb0d_0    conda-forge
+curl                      8.8.0                he654da7_1    conda-forge
+datrie                    0.8.2           py312h98912ed_7    conda-forge
+docutils                  0.21.2             pyhd8ed1ab_0    conda-forge
+dpath                     2.2.0              pyha770c72_0    conda-forge
+exceptiongroup            1.2.2              pyhd8ed1ab_0    conda-forge
+expat                     2.6.2                h59595ed_0    conda-forge
+font-ttf-dejavu-sans-mono 2.37                 hab24e00_0    conda-forge
+font-ttf-inconsolata      3.000                h77eed37_0    conda-forge
+font-ttf-source-code-pro  2.038                h77eed37_0    conda-forge
+font-ttf-ubuntu           0.83                 h77eed37_2    conda-forge
+fontconfig                2.14.2               h14ed4e7_0    conda-forge
+fonts-conda-ecosystem     1                             0    conda-forge
+fonts-conda-forge         1                             0    conda-forge
+freetype                  2.12.1               h267a509_2    conda-forge
+fribidi                   1.0.10               h36c2ea0_0    conda-forge
+gcc_impl_linux-64         14.1.0               h3c94d91_0    conda-forge
+gfortran_impl_linux-64    14.1.0               he4a1faa_0    conda-forge
+giflib                    5.2.2                hd590300_0    conda-forge
+gitdb                     4.0.11             pyhd8ed1ab_0    conda-forge
+gitpython                 3.1.43             pyhd8ed1ab_0    conda-forge
+graphite2                 1.3.13            h59595ed_1003    conda-forge
+gsl                       2.7                  he838d99_0    conda-forge
+gxx_impl_linux-64         14.1.0               h2879b86_0    conda-forge
+h2                        4.1.0              pyhd8ed1ab_0    conda-forge
+harfbuzz                  8.5.0                hfac3d4d_0    conda-forge
+hpack                     4.0.0              pyh9f0ad1d_0    conda-forge
+humanfriendly             10.0               pyhd8ed1ab_6    conda-forge
+hyperframe                6.0.1              pyhd8ed1ab_0    conda-forge
+icu                       73.2                 h59595ed_0    conda-forge
+idna                      3.7                pyhd8ed1ab_0    conda-forge
+importlib_resources       6.4.0              pyhd8ed1ab_0    conda-forge
+iniconfig                 2.0.0              pyhd8ed1ab_0    conda-forge
+jinja2                    3.1.4              pyhd8ed1ab_0    conda-forge
+jq                        1.7.1                hd590300_0    conda-forge
+jsonschema                4.23.0             pyhd8ed1ab_0    conda-forge
+jsonschema-specifications 2023.12.1          pyhd8ed1ab_0    conda-forge
+jupyter_core              5.7.2           py312h7900ff3_0    conda-forge
+kernel-headers_linux-64   3.10.0              h4a8ded7_16    conda-forge
+keyutils                  1.6.1                h166bdaf_0    conda-forge
+krb5                      1.21.3               h659f571_0    conda-forge
+lcms2                     2.16                 hb7c19ff_0    conda-forge
+ld_impl_linux-64          2.40                 hf3520f5_7    conda-forge
+lerc                      4.0.0                h27087fc_0    conda-forge
+libblas                   3.9.0           22_linux64_openblas    conda-forge
+libcblas                  3.9.0           22_linux64_openblas    conda-forge
+libcups                   2.3.3                h4637d8d_4    conda-forge
+libcurl                   8.8.0                hca28451_1    conda-forge
+libdeflate                1.20                 hd590300_0    conda-forge
+libedit                   3.1.20191231         he28a2e2_2    conda-forge
+libev                     4.33                 hd590300_2    conda-forge
+libexpat                  2.6.2                h59595ed_0    conda-forge
+libffi                    3.4.2                h7f98852_5    conda-forge
+libgcc-devel_linux-64     14.1.0             h5d3d1c9_100    conda-forge
+libgcc-ng                 14.1.0               h77fa898_0    conda-forge
+libgfortran-ng            14.1.0               h69a702a_0    conda-forge
+libgfortran5              14.1.0               hc5f4f2c_0    conda-forge
+libglib                   2.80.3               h8a4344b_1    conda-forge
+libgomp                   14.1.0               h77fa898_0    conda-forge
+libiconv                  1.17                 hd590300_2    conda-forge
+libjpeg-turbo             3.0.0                hd590300_1    conda-forge
+liblapack                 3.9.0           22_linux64_openblas    conda-forge
+liblapacke                3.9.0           22_linux64_openblas    conda-forge
+libnghttp2                1.58.0               h47da74e_1    conda-forge
+libnsl                    2.0.1                hd590300_0    conda-forge
+libopenblas               0.3.27          pthreads_hac2b453_1    conda-forge
+libpng                    1.6.43               h2797004_0    conda-forge
+libsanitizer              14.1.0               hcba0ae0_0    conda-forge
+libsqlite                 3.46.0               hde9e2c9_0    conda-forge
+libssh2                   1.11.0               h0841786_0    conda-forge
+libstdcxx-devel_linux-64  14.1.0             h5d3d1c9_100    conda-forge
+libstdcxx-ng              14.1.0               hc0a3c3a_0    conda-forge
+libtiff                   4.6.0                h1dd3fc0_3    conda-forge
+libuuid                   2.38.1               h0b41bf4_0    conda-forge
+libwebp-base              1.4.0                hd590300_0    conda-forge
+libxcb                    1.16                 hd590300_0    conda-forge
+libxcrypt                 4.4.36               hd590300_1    conda-forge
+libzlib                   1.3.1                h4ab18f5_1    conda-forge
+make                      4.3                  hd18ef5c_1    conda-forge
+markupsafe                2.1.5           py312h98912ed_0    conda-forge
+mgatk                     0.7.0              pyhdfd78af_1    bioconda
+nbformat                  5.10.4             pyhd8ed1ab_0    conda-forge
+ncurses                   6.5                  h59595ed_0    conda-forge
+numpy                     2.0.0           py312h22e1c76_0    conda-forge
+oniguruma                 6.9.9                hd590300_0    conda-forge
+openjdk                   22.0.1               hb622114_0    conda-forge
+openssl                   3.3.1                h4bc722e_2    conda-forge
+optparse-pretty           0.1.1              pyhd8ed1ab_0    conda-forge
+packaging                 24.1               pyhd8ed1ab_0    conda-forge
+pandas                    2.2.2           py312h1d6d2e6_1    conda-forge
+pango                     1.54.0               h84a9a3c_0    conda-forge
+pcre2                     10.44                h0f59acf_0    conda-forge
+picard-slim               3.2.0                hdfd78af_0    bioconda
+pip                       24.0               pyhd8ed1ab_0    conda-forge
+pixman                    0.43.2               h59595ed_0    conda-forge
+pkgutil-resolve-name      1.3.10             pyhd8ed1ab_1    conda-forge
+plac                      1.4.3              pyhd8ed1ab_0    conda-forge
+platformdirs              4.2.2              pyhd8ed1ab_0    conda-forge
+pluggy                    1.5.0              pyhd8ed1ab_0    conda-forge
+psutil                    6.0.0           py312h9a8786e_0    conda-forge
+pthread-stubs             0.4               h36c2ea0_1001    conda-forge
+pulp                      2.7.0           py312h7900ff3_1    conda-forge
+pycparser                 2.22               pyhd8ed1ab_0    conda-forge
+pyparsing                 3.1.2              pyhd8ed1ab_0    conda-forge
+pysam                     0.22.1          py312hcfdcdd7_2    bioconda
+pysocks                   1.7.1              pyha2e5f31_6    conda-forge
+pytest                    8.2.2              pyhd8ed1ab_0    conda-forge
+python                    3.12.4          h194c7f8_0_cpython    conda-forge
+python-dateutil           2.9.0              pyhd8ed1ab_0    conda-forge
+python-fastjsonschema     2.20.0             pyhd8ed1ab_0    conda-forge
+python-tzdata             2024.1             pyhd8ed1ab_0    conda-forge
+python_abi                3.12                    4_cp312    conda-forge
+pytz                      2024.1             pyhd8ed1ab_0    conda-forge
+pyyaml                    6.0.1           py312h98912ed_1    conda-forge
+r-abind                   1.4_5           r43hc72bb7e_1006    conda-forge
+r-base                    4.3.3               he2d9a6e_10    conda-forge
+r-bitops                  1.0_7             r43hb1dbf0f_3    conda-forge
+r-cli                     3.6.3             r43h0d4f4ea_1    conda-forge
+r-crayon                  1.5.3             r43hc72bb7e_1    conda-forge
+r-data.table              1.15.4            r43ha8f4200_0    conda-forge
+r-dplyr                   1.1.4             r43h0d4f4ea_1    conda-forge
+r-ellipsis                0.3.2             r43hb1dbf0f_3    conda-forge
+r-fansi                   1.0.6             r43hb1dbf0f_1    conda-forge
+r-generics                0.1.3             r43hc72bb7e_3    conda-forge
+r-glue                    1.7.0             r43hb1dbf0f_1    conda-forge
+r-lattice                 0.22_6            r43hb1dbf0f_1    conda-forge
+r-lifecycle               1.0.4             r43hc72bb7e_1    conda-forge
+r-magrittr                2.0.3             r43hb1dbf0f_3    conda-forge
+r-matrix                  1.6_5             r43he966344_1    conda-forge
+r-matrixstats             1.3.0             r43hb1dbf0f_1    conda-forge
+r-pillar                  1.9.0             r43hc72bb7e_2    conda-forge
+r-pkgconfig               2.0.3             r43hc72bb7e_4    conda-forge
+r-r6                      2.5.1             r43hc72bb7e_3    conda-forge
+r-rcurl                   1.98_1.16         r43h6b349a7_0    conda-forge
+r-rlang                   1.1.4             r43ha18555a_1    conda-forge
+r-tibble                  3.2.1             r43hdb488b9_3    conda-forge
+r-tidyselect              1.2.1             r43hc72bb7e_1    conda-forge
+r-utf8                    1.2.4             r43hb1dbf0f_1    conda-forge
+r-vctrs                   0.6.5             r43h0d4f4ea_1    conda-forge
+r-withr                   3.0.0             r43hc72bb7e_1    conda-forge
+readline                  8.2                  h8228510_1    conda-forge
+referencing               0.35.1             pyhd8ed1ab_0    conda-forge
+regex                     2024.5.15       py312h9a8786e_0    conda-forge
+requests                  2.32.3             pyhd8ed1ab_0    conda-forge
+reretry                   0.11.8             pyhd8ed1ab_0    conda-forge
+rpds-py                   0.19.0          py312hf008fa9_0    conda-forge
+ruamel.yaml               0.18.6          py312h98912ed_0    conda-forge
+ruamel.yaml.clib          0.2.8           py312h98912ed_0    conda-forge
+sed                       4.8                  he412f7d_0    conda-forge
+setuptools                71.0.1             pyhd8ed1ab_0    conda-forge
+six                       1.16.0             pyh6c4a22f_0    conda-forge
+smart_open                7.0.4              pyhd8ed1ab_0    conda-forge
+smmap                     5.0.0              pyhd8ed1ab_0    conda-forge
+snakemake-minimal         7.32.4             pyhdfd78af_0    bioconda
+stopit                    1.1.2                      py_0    conda-forge
+sysroot_linux-64          2.17                h4a8ded7_16    conda-forge
+tabulate                  0.9.0              pyhd8ed1ab_1    conda-forge
+throttler                 1.2.2              pyhd8ed1ab_0    conda-forge
+tk                        8.6.13          noxft_h4845f30_101    conda-forge
+tktable                   2.10                 h8bc8fbc_6    conda-forge
+toml                      0.10.2             pyhd8ed1ab_0    conda-forge
+tomli                     2.0.1              pyhd8ed1ab_0    conda-forge
+tomlkit                   0.13.0             pyha770c72_0    conda-forge
+toposort                  1.10               pyhd8ed1ab_0    conda-forge
+traitlets                 5.14.3             pyhd8ed1ab_0    conda-forge
+typing_extensions         4.12.2             pyha770c72_0    conda-forge
+tzdata                    2024a                h0c530f3_0    conda-forge
+urllib3                   2.2.2              pyhd8ed1ab_1    conda-forge
+wheel                     0.43.0             pyhd8ed1ab_1    conda-forge
+wrapt                     1.16.0          py312h98912ed_0    conda-forge
+xmltodict                 0.13.0             pyhd8ed1ab_0    conda-forge
+xorg-fixesproto           5.0               h7f98852_1002    conda-forge
+xorg-inputproto           2.3.2             h7f98852_1002    conda-forge
+xorg-kbproto              1.0.7             h7f98852_1002    conda-forge
+xorg-libice               1.1.1                hd590300_0    conda-forge
+xorg-libsm                1.2.4                h7391055_0    conda-forge
+xorg-libx11               1.8.9                hb711507_1    conda-forge
+xorg-libxau               1.0.11               hd590300_0    conda-forge
+xorg-libxdmcp             1.1.3                h7f98852_0    conda-forge
+xorg-libxext              1.3.4                h0b41bf4_2    conda-forge
+xorg-libxfixes            5.0.3             h7f98852_1004    conda-forge
+xorg-libxi                1.7.10               h7f98852_0    conda-forge
+xorg-libxrender           0.9.11               hd590300_0    conda-forge
+xorg-libxt                1.3.0                hd590300_1    conda-forge
+xorg-libxtst              1.2.3             h7f98852_1002    conda-forge
+xorg-recordproto          1.14.2            h7f98852_1002    conda-forge
+xorg-renderproto          0.11.1            h7f98852_1002    conda-forge
+xorg-xextproto            7.3.0             h0b41bf4_1003    conda-forge
+xorg-xproto               7.0.31            h7f98852_1007    conda-forge
+xz                        5.2.6                h166bdaf_0    conda-forge
+yaml                      0.2.5                h7f98852_2    conda-forge
+yq                        3.4.3              pyhd8ed1ab_0    conda-forge
+yte                       1.5.4              pyha770c72_0    conda-forge
+zipp                      3.19.2             pyhd8ed1ab_0    conda-forge
+zlib                      1.3.1                h4ab18f5_1    conda-forge
+zstandard                 0.23.0          py312h3483029_0    conda-forge
+zstd                      1.5.6                ha6fb4c9_0    conda-forge
+
+ERROR 2: 
+We utilize Picard tools for PCR duplicate removal. Thus, java is by default a required dependency. 
+While not recommended, you can avoid this dependency by throwing the --keep-duplicates flag, which will circumvent the java call (but retain likely PCR duplicates, which we've found decreases the interpretability of variants by introducing additional false positives).
+
+SOLUTION 2: 
+Camillla reccomends NOT installing java in the same enviroment and exporting this instead from central cluster modules. 
+The PATH to java can be specified AFTER the environment has been activated in the SLURM script
+
+JAVA_HOME=/export/MBU/software/anaconda3/pkgs/openjdk-8.0.121-1 
+PATH=$PATH$HOME/bin:$JAVA_HOME/bin
+export PATH=~/miniconda3/bin/:$PATH
+
+ERROR 3: 
+MGATK is supposed to be run on already demultiplexed BAM files. 
+
+SOLUTION 3: 
+Nell reccomends feeding mgatk only the barcodes that belong to one person i.e. patient rather than control
+i.e. either HASH-1 or HASH-2 rather than HASH-3
+so that it can call heteroplasmy correctly, rather than on the whole pool of multiplexed cells from different people
+
+
+ERROR 4: 
+When running hpc_mgatk_mamba.sh with hash-1 barcodes, this is the log file
+
+ModuleNotFoundError: No module named 'pysam'
+ModuleNotFoundError: No module named 'pysam'
+ModuleNotFoundError: No module named 'pysam'
+Traceback (most recent call last):
+Traceback (most recent call last):
+  File "/nfs4/suffolk/Homes/ec474/miniforge3/envs/MGATK/lib/python3.12/site-packages/mgatk/bin/python/chunk_barcoded_bam.py
+", line 5, in <module>
+  File "/nfs4/suffolk/Homes/ec474/miniforge3/envs/MGATK/lib/python3.12/site-packages/mgatk/bin/python/chunk_barcoded_bam.py
+", line 5, in <module>
+    import pysam
+    import pysam
+ModuleNotFoundError: No module named 'pysam'
+ModuleNotFoundError: No module named 'pysam'
+Thu Jul 18 12:09:35 UTC 2024: Finished determining/splitting barcodes for genotyping.
+Thu Jul 18 12:09:35 UTC 2024: Genotyping samples with 12 threads
+Error in checkGrep(grep(".A.txt", files)) :
+  Improper folder specification; file missing / extra file present. See documentation
+Calls: importMito -> checkGrep
+Execution halted
+DONE!
+
+SOLUTION 4: 
+a. 
+Change the rownames in input barcodes to add "-1" to make it compatible with the bam file CB
+
+samtools view atac_possorted_bam.bam | head -1
+A00489:1951:HLV5YDRX3:2:2151:16830:13510	83	chr1	9996	0	3S47M	=	10020	-23	CCTTCCGATAACCCTAACCCTAACCCTAACCCTAACCCTACCCCTAACCC	FFF,,F,,,FF,FFFFF:,FFFFF,FFFFF,FFFFFFFF,,,FFFF,,F:	NM:i:1	MD:Z:37A9	AS:i:42	XS:i:42	CR:Z:ACGTCACTCAAGGTCG	CY:Z:FFFFFFFFFFFF:FFF	
+CB:Z:AAGGATTAGTCAGGCC-1	BC:Z:CCGGATCC	QT:Z:F:FFFFFF	RG:Z:mitox_count_masked:MissingLibrary:1:HLV5YDRX3:2
+
+b. pysam is not found even though it is present in my environemnt MGATK: 
+pysam                     0.22.1          py312hcfdcdd7_2    bioconda
+
+Try to change the JAVA path in case this deactivates my environemnt? 
+
+JAVA_HOME=/export/MBU/software/anaconda3/pkgs/openjdk-8.0.121-1 
+export JAVA_HOME
+export PATH=$JAVA_HOME/bin:$PATH
+
+
+c. Try to change the way miniforge3 is activated beforehand 
+module load miniconda/2024-02-20
+conda activate /home/ec474/miniforge3/envs/MGATK
+
+module load miniconda/2024-02-20
+source /home/ec474/miniforge3/bin/activate /home/ec474/miniforge3/envs/MGATK
+
+d. Run interactively instead
+
+(MGATK) norfolk[/home/ec474]% JAVA_HOME=/export/MBU/software/anaconda3/pkgs/openjdk-8.0.121-1
+(MGATK) norfolk[/home/ec474]% export JAVA_HOME
+(MGATK) norfolk[/home/ec474]% export PATH=$JAVA_HOME/bin:$PATH
+(MGATK) norfolk[/home/ec474]% which java
+/suffolk/Homes/ec474/miniforge3/envs/MGATK/bin/java
+
+(MGATK) norfolk[/home/ec474]% which python
+/suffolk/Homes/ec474/miniforge3/envs/MGATK/bin/python
+
+(MGATK) norfolk[/home/ec474]% mgatk tenx -i ${input_dir}/outs/atac_possorted_bam.bam \
+> -n mtx_mgatk_1 -o ${output_dir} \
+> -c 12 \
+> -bt CB \
+> -b ${barcodes}/hash1_barcodes.tsv
+
+Thu Jul 18 14:02:39 BST 2024: mgatk v0.7.0
+Thu Jul 18 14:02:40 BST 2024: Found bam file: /suffolk/WorkGenomicsD/ec474/mitox_count_masked/outs/atac_possorted_bam.bam for genotyping.
+Thu Jul 18 14:02:40 BST 2024: Found file of barcodes to be parsed: /suffolk/WorkGenomicsD/ec474/mgatk/hash_barcodes/hash1_barcodes.tsv
+Thu Jul 18 14:02:40 BST 2024: User specified mitochondrial genome matches .bam file
+Thu Jul 18 14:04:54 BST 2024: Finished determining/splitting barcodes for genotyping.
+Thu Jul 18 14:04:54 BST 2024: Genotyping samples with 12 threads
+Error in (function (cond)  :
+  error in evaluating the argument 'x' in selecting a method for function 'levels': subscript out of bounds
+Calls: importMito ... levels -> [[ -> [[.data.frame -> <Anonymous> -> <Anonymous>
+Execution halted
+
+
+barcodes <- read.table(barcode_file, header = FALSE, sep = "\t")
+> str(barcodes)
+'data.frame':	221 obs. of  1 variable:
+ $ V1: chr  "AAACGCGCAGCACGTT-1" "AAACGCGCAGGCAAGC-1" "AACAGGATCGCTAGAT-1" "AACCGCTCAACGTGCT-1" ...
+
+ 

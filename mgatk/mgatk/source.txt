@@ -1,0 +1,20 @@
+
+    ./script runs the script as an executable file, launching a new shell to run it
+    source script reads and executes commands from filename in the current shell environment
+
+. filename [arguments]
+source filename [arguments]
+       Read  and  execute  commands  from filename in the current shell
+       environment and return the exit status of the last command  exe‐
+       cuted from filename.  If filename does not contain a slash, file
+       names in PATH are used to find the  directory  containing  file‐
+       name.   The  file  searched  for in PATH need not be executable.
+       When bash is  not  in  posix  mode,  the  current  directory  is
+       searched  if no file is found in PATH.  If the sourcepath option
+       to the shopt builtin command is turned  off,  the  PATH  is  not
+       searched.   If any arguments are supplied, they become the posi‐
+       tional parameters when  filename  is  executed.   Otherwise  the
+       positional  parameters  are unchanged.  The return status is the
+       status of the last command exited within the  script  (0  if  no
+       commands  are  executed),  and false if filename is not found or
+       cannot be read.

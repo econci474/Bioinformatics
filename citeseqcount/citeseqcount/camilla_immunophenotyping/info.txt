@@ -1,0 +1,30 @@
+########## immunophenotyping experiment ##########
+
+experimentalist: Zoe Golder
+bioinformatician: Camilla Lyons
+date (of recieving first samples): 14 September 2023
+
+location of fastq files: /raw/RawGenomicsH/Genomics_Group/fastqs/ImmunoPheno_project/00
+7_Immuno_GP0030
+working directory: /suffolk/WorkGenomicsF/cl873/MBU_zjg20_covid
+
+experimental design: samples from 3243 patients were taken before and after covi
+d booster vaccine. We also have 1 control.
+sequencing technology: 10X multiome: ATAC + GEX
+cells: PBMC
+multiplexed: yes. Details: 
+               MTOX_07 TotalSeq A0451 anti-Nuclear Pore Complex Prot
+eins Hashtag 1. Cat number 682205. Barcode Sequence: TTCCTGCCATTACTA
+
+			   GP0030D0CT TotalSeq A0452 anti-Nuclear Pore Complex P
+roteins Hashtag 2. Cat number 682207. Barcode Sequence: CCGTACCTCATTGTT
+
+			   GP0030D28CT TotalSeq A0453 anti-Nuclear Pore Complex
+Proteins Hashtag 3. Cat number 682209. Barcode Sequence: GGTAGATGTCCTCAG
+# NB: as of 15 September, we only have data from 1 patient.
+
+
+PIPELINE
+1. Malwina's nf pipeline: FastQC, FastScreen, CellRanger arc count, mgatk, quali
+map, multiqc
+2. analysis in R
